@@ -27,11 +27,11 @@ This is the first public release.
 
 ## Screenshots
 
+![Profiles](screenshots/newprofiles.png)
 ![Home](screenshots/home.png)
-![Profiles](screenshots/profiles.png)
-![Detail](screenshots/detail.png)
 ![Discover](screenshots/discover.png)
 ![Library](screenshots/library.png)
+![Detail](screenshots/detail.png)
 ![Settings](screenshots/settings.png)
 
 ## Support

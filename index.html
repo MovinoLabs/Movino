@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Early boot diagnostics: register BEFORE module script executes
+      (function () {
+        var bootErrorMsg = "";
+        window.__setBootError = function (msg) {
+          bootErrorMsg = String(msg || "Unknown error");
+          window.__bootErrorMsg = bootErrorMsg;
+          var el = document.getElementById("boot-error");
+          if (el) el.textContent = bootErrorMsg;
+        };
+
+        window.addEventListener("error", function (e) {
+          var message = (e && e.message) || "Script error";
+          var location = (e && e.filename ? e.filename : "") + ":" + (e && e.lineno ? e.lineno : "");
+          window.__setBootError(message + (location ? " @ " + location : ""));
+        });
+
+        window.addEventListener("unhandledrejection", function (e) {
+          var reason = e && e.reason;
+          var msg = reason ? (reason.message || reason.stack || String(reason)) : "Unknown async error";
+          window.__setBootError("Promise: " + msg);
+        });
+      })();
+    </script>
+    <script>
+      // Android TV WebView reports a small device-width (e.g. 960px for 1080p),
+      // causing oversized UI. Use the actual screen resolution instead.
+      (function() {
+        var ua = navigator.userAgent || '';
+        var isAndroidTV = /Android/.test(ua) && (/TV|AFT|BRAVIA|Nexus Player|ADT-|Chromecast/i.test(ua) || (window.screen && window.screen.width >= 1280));
+        if (isAndroidTV) {
+          var realWidth = window.screen.width || 1920;
+          var vp = document.querySelector('meta[name="viewport"]');
+          if (vp) vp.setAttribute('content', 'width=' + realWidth + ', initial-scale=1.0');
+        }
+      })();
+    </script>
+    <title>MOVINO — Premium Streaming</title>
+    <meta name="description" content="MOVINO is a premium cinematic streaming experience for your TV. Elegant, immersive, and remote-friendly." />
+    <meta name="author" content="MOVINO" />
+
+    <meta property="og:title" content="MOVINO — Premium Streaming" />
+    <meta property="og:description" content="A cinematic streaming experience designed for your living room." />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@movino" />
+
+    <style>
+      /* Prevent white flash — dark background from the start */
+      html, body, #root {
+        margin: 0;
+        padding: 0;
+        background: #0a0e1a !important;
+        min-height: 100vh;
+        min-height: 100dvh;
+        /* Prevent white flash on Android keyboard open/switch */
+        -webkit-tap-highlight-color: transparent;
+        /* Overshoot coverage: fill beyond viewport during resize */
+        box-shadow: 0 0 0 200vmax #0a0e1a;
+      }
+      /* Force dark on every possible surface during keyboard transitions */
+      html::before, html::after,
+      body::before, body::after {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: #0a0e1a;
+        z-index: -1;
+        pointer-events: none;
+      }
+      /* Ensure dialog backdrop is never white */
+      [data-radix-portal] {
+        background: transparent;
+      }
+      /* Native splash shown before React hydrates */
+      #native-splash {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #0a0e1a;
+        transition: opacity 0.5s ease;
+      }
+      #native-splash.hide {
+        opacity: 0;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Instant dark splash while JS loads -->
+    <div id="native-splash">
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" style="opacity:0.3">
+        <circle cx="40" cy="40" r="38" stroke="hsl(38,75%,55%)" stroke-width="1.5" stroke-opacity="0.25"/>
+      </svg>
+    </div>
+    <div id="root"></div>
+    <script
+      type="module"
+      src="/src/main.tsx"
+      onerror="window.__setBootError && window.__setBootError('Main module failed to load (script load error).')"
+    ></script>
+    <script>
+      // Fallback: if React doesn't mount within 8s, show error + remove splash
+      setTimeout(function() {
+        var root = document.getElementById('root');
+        if (root && root.childElementCount === 0) {
+          var splash = document.getElementById('native-splash');
+          if (splash) splash.remove();
+          root.innerHTML = '<div style="color:#fff;padding:48px;font-family:sans-serif;text-align:center;">'
+            + '<h2 style="color:#D4A84B;">MOVINO</h2>'
+            + '<p style="margin-top:16px;">App could not load.</p>'
+            + '<p id="boot-error" style="margin-top:12px;font-size:13px;color:#999;max-width:600px;margin-left:auto;margin-right:auto;word-break:break-all;"></p>'
+            + '<p style="margin-top:24px;font-size:12px;color:#666;">Connect Chrome DevTools via chrome://inspect to see the error.</p>'
+            + '</div>';
+
+          if (window.__bootErrorMsg) {
+            var bootErrorEl = document.getElementById('boot-error');
+            if (bootErrorEl) bootErrorEl.textContent = String(window.__bootErrorMsg);
+          }
+        }
+      }, 8000);
+    </script>
+  </body>
+</html>

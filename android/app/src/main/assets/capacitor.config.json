@@ -1,0 +1,16 @@
+{
+	"appId": "app.movino.tv",
+	"appName": "Movino",
+	"webDir": "dist",
+	"android": {
+		"allowMixedContent": true,
+		"backgroundColor": "#0a0e1a",
+		"minWebViewVersion": 75,
+		"webContentsDebuggingEnabled": true,
+		"adjustModeOnResize": "none"
+	},
+	"server": {
+		"androidScheme": "https",
+		"cleartext": true
+	}
+}

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Movino</string>
+    <string name="title_activity_main">Movino</string>
+    <string name="package_name">app.movino.tv</string>
+    <string name="custom_url_scheme">app.movino.tv</string>
+</resources>

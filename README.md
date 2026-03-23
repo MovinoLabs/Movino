@@ -25,6 +25,15 @@ Authentication happens against the Stremio ecosystem, and app data required for 
 
 This is the first public release.
 
+## Screenshots
+
+![Home](screenshots/home.png)
+![Profiles](screenshots/profiles.png)
+![Detail](screenshots/detail.png)
+![Discover](screenshots/discover.png)
+![Library](screenshots/library.png)
+![Settings](screenshots/settings.png)
+
 ## Support
 
 Feedback, issues, and contributions are welcome.  

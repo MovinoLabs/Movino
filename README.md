@@ -60,6 +60,6 @@ Bug reports, feature ideas, and general feedback are appreciated.
 
 Please note: this first version has not yet been tested on Amazon Fire TV / Fire OS devices. I’d like to explore full compatibility and support for those devices in a near future release.
 
-##Contact
+## Contact
 For questions, feedback, bug reports, or other inquiries: movinolabs@outlook.com
 

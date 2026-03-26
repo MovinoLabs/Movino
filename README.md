@@ -63,4 +63,4 @@ For questions, feedback, bug reports, or other inquiries: movinolabs@outlook.com
 ![Discover](screenshots/discover.png)
 ![Library](screenshots/library.png)
 ![Detail](screenshots/detail.png)
-![Settings](screenshots/setting.png)
+![Settings](screenshots/settings.png)

@@ -1,6 +1,6 @@
 # Movino
 
-Independent Android TV client for Stremio users, built to provide a better TV-first experience with profiles, improved genre browsing, and remote-friendly navigation.
+Independent Android TV client for Stremio users, designed for a better TV-first experience using your Stremio account, with profiles, improved genre browsing, and remote-friendly navigation.
 
 ## Why I built this
 
@@ -40,6 +40,9 @@ Authentication happens against the Stremio ecosystem, and app data required for 
 
 This is the first public release.
 
+## Donations
+Donations are appreciated and help support continued development: https://ko-fi.com/movino
+
 ## Screenshots
 
 ![Profiles](screenshots/newprofiles.png)
@@ -57,5 +60,4 @@ Bug reports, feature ideas, and general feedback are appreciated.
 
 Please note: this first version has not yet been tested on Amazon Fire TV / Fire OS devices. I’d like to explore full compatibility and support for those devices in a near future release.
 
-## Donations
-Donations are appreciated and help support continued development: https://ko-fi.com/movino
+

@@ -40,21 +40,6 @@ Authentication happens against the Stremio ecosystem, and app data required for 
 
 This is the first public release.
 
-## Donations
-Donations are appreciated and help support continued development: https://ko-fi.com/movino
-
-## Support
-
-Feedback is very welcome. Bug reports, feature ideas, and general feedback are greatly appreciated.
-
-Development is already continuing behind the scenes, with ongoing improvements and updates in progress.
-
-If Movino sees enough interest and active usage, development may also expand to other platforms, including Windows, Android phones, and iOS.
-
-Please note: this first version has not yet been tested on Amazon Fire TV / Fire OS devices. Support and full compatibility for those devices may be explored in a future release.
-
-## Contact
-For questions, feedback, bug reports, or other inquiries: movinolabs@outlook.com
 
 ## Screenshots
 
